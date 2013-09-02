@@ -18,7 +18,6 @@ import org.apache.cordova.PluginResult;
 
 public class Share extends CordovaPlugin {
 
-	@Override
 	public PluginResult execute(String action, JSONArray args, String callbackId) {
 		try {
 			JSONObject jo = args.getJSONObject(0);
