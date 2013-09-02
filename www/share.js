@@ -4,20 +4,22 @@
  * Kevin Schaul 2011
  *
  */
+(function(cordova){
+	var Share = function() {};
 
-var Share = function() {};
-            
-Share.prototype.show = function(content, success, fail) {
-    return cordova.exec( function(args) {
-        success(args);
-    }, function(args) {
-        fail(args);
-    }, 'Share', '', [content]);
-};
+	Share.prototype.show = function(content, success, fail) {
+		return cordova.exec( function(args) {
+			success(args);
+		}, function(args) {
+			fail(args);
+		}, 'Share', '', [content]);
+	};
 
-if(!window.plugins) {
-    window.plugins = {};
-}
-if (!window.plugins.share) {
-    window.plugins.share = new Share();
-}
+    cordova.addConstructor(function() {
+        window.share = new Share();
+        
+        // backwards compatibility
+        window.plugins = window.plugins || {};
+        window.plugins.share = window.share;
+    });
+})(window.PhoneGap || window.Cordova || window.cordova);
