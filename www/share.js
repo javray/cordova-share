@@ -15,11 +15,11 @@
 		}, 'Share', '', [content]);
 	};
 
-    cordova.addConstructor(function() {
+    
         window.share = new Share();
         
         // backwards compatibility
         window.plugins = window.plugins || {};
         window.plugins.share = window.share;
-    });
+   
 })(window.PhoneGap || window.Cordova || window.cordova);
